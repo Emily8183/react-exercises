@@ -1,14 +1,20 @@
 import "./App.css";
+import Heading from "./Heading";
 
 function App() {
   const name = "Emily";
-  const currentYear = new Date().getFullYear();
+  const currentDate = new Date();
+
+  const currentYear = currentDate.getFullYear();
 
   return (
-    <div>
-      <p>Created by {name}</p>
-      <p>Copyright {currentYear}</p>
-    </div>
+    <>
+      <Heading />
+      <div>
+        <p>Created by {name}</p>
+        <p>Copyright {currentYear}</p>
+      </div>
+    </>
   );
 }
 
