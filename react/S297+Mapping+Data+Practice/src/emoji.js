@@ -20,4 +20,13 @@ const emoji = [
     meaning:
       "This is funny! A smiley face, rolling on the floor, laughing. The face is laughing boundlessly. The emoji version of “rofl“. Stands for „rolling on the floor, laughing“.",
   },
+  {
+    id: 4,
+    emoji: "😁",
+    name: "Hey smile!",
+    meaning:
+      "new meaning is here. This is funny! A smiley face, rolling on the floor, laughing boundlessly. The emoji version of “rofl“. Stands for „rolling on the floor, laughing“.",
+  },
 ];
+
+export default emoji;
