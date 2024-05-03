@@ -5,7 +5,7 @@ import Note from "./Note";
 import notes from "../notes";
 import "../App.css";
 
-//To make cookie cutter of notes:
+//To make cookie cutter:
 // 1) create a new component of Note.jsx (pass props)
 // 2) create a function that loops through the data and returns a new component for each note (don't forget the key)
 
