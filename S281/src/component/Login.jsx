@@ -6,15 +6,17 @@ function Login() {
   return (
     <div className="container">
       <h1>Hello</h1>
-      {InputList.map((input) => (
-        <Input
-          key={input.id}
-          type={input.type}
-          placeholder={input.placeholder}
-        />
-      ))}
+      <form className="form">
+        {InputList.map((input) => (
+          <Input
+            key={input.id}
+            type={input.type}
+            placeholder={input.placeholder}
+          />
+        ))}
 
-      <button type="submit">Input</button>
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 }
