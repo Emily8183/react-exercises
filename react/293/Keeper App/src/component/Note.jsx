@@ -5,11 +5,11 @@ import React from "react";
 // add the component to the App.jsx, and pass the props to the component
 // use a map function to loop each data, import the json file
 
-function Note() {
+function Note(props) {
   return (
     <div className="note">
-      <h1>Welcome to this App</h1>
-      <p>This is a simple app to keep track of your notes.</p>
+      <h1>{props.title}</h1>
+      <p>{props.content}</p>
     </div>
   );
 }
