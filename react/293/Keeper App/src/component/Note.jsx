@@ -1,5 +1,10 @@
 import React from "react";
 
+//To make cookie cutter's step:
+// create a new component
+// add the component to the App.jsx, and pass the props to the component
+// use a map function to loop each data, import the json file
+
 function Note() {
   return (
     <div className="note">
