@@ -5,17 +5,20 @@ import Note from "./Note";
 import notes from "../notes";
 import "../App.css";
 
-function createCards() {
-  return notes.map((note) => {
-    return <Note key={note.key} title={note.title} content={note.content} />;
-  });
-}
+// function createCards() {
+//   return notes.map((note) => {
+//     return <Note key={note.key} title={note.title} content={note.content} />;
+//   });
+// }
 
 function App() {
   return (
     <div>
       <Header />
-      {createCards()}
+      {/* {createCards()} */}
+      {notes.map((note) => (
+        <Note key={note.key} title={note.title} content={note.content} />
+      ))}
       <Footer />
     </div>
   );
