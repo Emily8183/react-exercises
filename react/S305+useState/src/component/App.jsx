@@ -8,18 +8,14 @@ function App() {
   const [time, setTime] = useState("TIME");
 
   function updateTime() {
-    const date = new Date();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-    const time = `${hours}:${minutes}:${seconds}`;
-    setTime(time);
+    const now = new Date().toLocaleTimeString("it-IT");
+    setTime(now);
   }
 
   return (
     <div className="container">
       <h1>{time}</h1>
-      <button onClick={updateTime}>Get Time</button>
+      <button onClick={updateTime}>Set Time</button>
     </div>
   );
 }
