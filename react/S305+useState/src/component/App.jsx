@@ -5,11 +5,13 @@ import React, { useState } from "react";
 // Challenge2: Create a new component that shows the current time without clicking button. Can use setInterval(code, delay);
 
 function App() {
-  const [time, setTime] = useState("TIME");
+  const now = new Date().toLocaleTimeString("it-IT");
+  const [time, setTime] = useState(now);
 
   function updateTime() {
-    const now = new Date().toLocaleTimeString("it-IT");
-    setTime(now);
+    const newTime = new Date().toLocaleTimeString("it-IT");
+
+    setTime(newTime);
   }
 
   return (
