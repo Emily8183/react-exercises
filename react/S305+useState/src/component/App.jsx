@@ -5,6 +5,9 @@ import React, { useState } from "react";
 // Challenge2: Create a new component that shows the current time without clicking button. Can use setInterval(code, delay);
 
 function App() {
+  setInterval(updateTime, 1000);
+  // This updateTime() gets called every second and that creates this dynamic refreshing h1.
+
   const now = new Date().toLocaleTimeString("it-IT");
   const [time, setTime] = useState(now);
 
