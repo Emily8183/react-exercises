@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Button() {
+function Button({ onClick }) {
   const [isHovered, setIsHovered] = useState(false);
 
   function onMouseOverHandler() {
@@ -16,6 +16,7 @@ function Button() {
       style={{ backgroundColor: isHovered ? "Black" : "White" }}
       onMouseOver={onMouseOverHandler}
       onMouseOut={onMouseOutHandler}
+      onClick={onClick}
     >
       Submit
     </button>
