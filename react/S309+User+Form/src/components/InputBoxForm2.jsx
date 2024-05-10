@@ -1,4 +1,4 @@
-//to combine fName and lName together
+//to combine fName and lName together, dynamically shown on title, but the submit button isnt functional here
 
 import React, { useState } from "react";
 import Button from "./Button";
@@ -18,7 +18,7 @@ function InputBoxForm2() {
       } else if (name === "lName") {
         return {
           fName: prevValue.fName,
-          lname: value,
+          lName: value,
         };
       }
     });
@@ -27,8 +27,7 @@ function InputBoxForm2() {
   return (
     <div>
       <h1>
-        Hello {fullName.fName}
-        {fullName.lName}
+        Hello {fullName.fName} {fullName.lName}
       </h1>
       <form>
         <input
