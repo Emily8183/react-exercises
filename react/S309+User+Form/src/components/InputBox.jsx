@@ -5,16 +5,14 @@ function InputBox() {
   const [name, setName] = useState("");
   const [heading, setHeading] = useState("");
 
-  function showName(event) {
+  function settingName(event) {
     setName(event.target.value);
+    console.log(event.target);
   }
-
-  // function handleButtonClick(event) {
-  //   setName(event.target.value);
-  // }
 
   function handleButtonClick() {
     setHeading(name);
+    console.log(name);
   }
 
   return (
@@ -24,7 +22,7 @@ function InputBox() {
       <input
         type="text"
         placeholder="Enter your name"
-        onChange={showName}
+        onChange={settingName}
         value={name}
       />
       <Button onClick={handleButtonClick} />
