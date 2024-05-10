@@ -1,6 +1,6 @@
 import "../App.css";
 import React from "react";
-import InputBoxForm from "./InputBox";
+import InputBoxForm from "./InputBoxForm";
 // import InputBox from "./InputBox";
 // import InputBox2 from "./InputBox2";
 
