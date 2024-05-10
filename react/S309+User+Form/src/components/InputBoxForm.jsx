@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Button from "./Button";
 
+console.log("1");
+
 function InputBoxForm() {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
