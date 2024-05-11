@@ -1,13 +1,13 @@
 import "../App.css";
 import React from "react";
-import InputBoxForm2 from "./InputBoxForm2";
+import S312 from "./S312";
 // import InputBox from "./InputBox";
 // import InputBox2 from "./InputBox2";
 
 function App() {
   return (
     <div className="container">
-      <InputBoxForm2 />
+      <S312 />
     </div>
   );
 }

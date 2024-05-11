@@ -1,4 +1,5 @@
 //to combine fName and lName together, dynamically shown on title, but the submit button isnt functional here
+//this version works
 
 import React, { useState } from "react";
 import Button from "./Button";
