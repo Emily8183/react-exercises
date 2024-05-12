@@ -12,26 +12,32 @@ function S312() {
     const { value, name } = event.target;
     //using the destructing here to get the value and name of the input
 
+    // setContact((prevValue) => {
+    //   if (name === "fName") {
+    //     return {
+    //       fName: value,
+    //       lName: prevValue.lName,
+    //       email: prevValue.email,
+    //     };
+    //   } else if (name === "lName") {
+    //     return {
+    //       fName: prevValue.fName,
+    //       lName: value,
+    //       email: prevValue.email,
+    //     };
+    //   } else if (name === "email") {
+    //     return {
+    //       fName: prevValue.fName,
+    //       lName: prevValue.lName,
+    //       email: value,
+    //     };
+    //   }
+    // });
     setContact((prevValue) => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevValue.lName,
-          email: prevValue.email,
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: value,
-          email: prevValue.email,
-        };
-      } else if (name === "email") {
-        return {
-          fName: prevValue.fName,
-          lName: prevValue.lName,
-          email: value,
-        };
-      }
+      return {
+        ...prevValue,
+        [name]: value,
+      };
     });
   }
 
