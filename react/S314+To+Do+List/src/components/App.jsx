@@ -1,6 +1,6 @@
 import "../App.css";
 import React, { useState } from "react";
-import ToDoItem from "./ToDoItem";
+import ToDoItem2 from "./ToDoItem2";
 //思路：要想把用户的input呈现在列表里，需要一个useState()来记录define the state of the input value；且需要另外一个useState()在用户点击按钮后，将新的value陈列在list中；
 //步骤：1）如何记录用户的input value:
 //创建item的初始值“ ”, 把value添加到input box，同时加上onchange，在运行setItem后，这个新的value应该出现在state内（此时无需点击按钮）
@@ -28,6 +28,14 @@ function App() {
     // clear the input box after adding the item
   }
 
+  function removeItems(id) {
+    setList((prevList) => {
+      return prevList.filter((item, index) => {
+        return index !== id;
+      });
+    });
+  }
+
   return (
     <div className="container">
       <div className="heading">
@@ -45,8 +53,15 @@ function App() {
           {/* {list.map((listItem) => {
             return <li>{listItem}</li>;
           })} */}
-          {list.map((listItem) => (
-            <ToDoItem text={listItem} />
+          {list.map((listItem, index) => (
+            // 需要将Index加入parameter，详细查map function的用法
+
+            <ToDoItem2
+              text={listItem}
+              key={index}
+              id={index}
+              onChecked={removeItems}
+            />
           ))}
           {/* 注意这里需要加{} */}
         </ul>
