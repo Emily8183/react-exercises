@@ -1,5 +1,6 @@
 import "../App.css";
 import React, { useState } from "react";
+import ToDoItem from "./ToDoItem";
 //思路：要想把用户的input呈现在列表里，需要一个useState()来记录define the state of the input value；且需要另外一个useState()在用户点击按钮后，将新的value陈列在list中；
 //步骤：1）如何记录用户的input value:
 //创建item的初始值“ ”, 把value添加到input box，同时加上onchange，在运行setItem后，这个新的value应该出现在state内（此时无需点击按钮）
@@ -41,9 +42,12 @@ function App() {
       </div>
       <div>
         <ul>
-          {list.map((listItem) => {
+          {/* {list.map((listItem) => {
             return <li>{listItem}</li>;
-          })}
+          })} */}
+          {list.map((listItem) => (
+            <ToDoItem text={listItem} />
+          ))}
           {/* 注意这里需要加{} */}
         </ul>
       </div>
