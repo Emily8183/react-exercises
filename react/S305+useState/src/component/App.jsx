@@ -10,6 +10,7 @@ function App() {
 
   const now = new Date().toLocaleTimeString("it-IT");
   const [time, setTime] = useState(now);
+  const [isHovered, setIsHovered] = useState(false);
 
   function updateTime() {
     const newTime = new Date().toLocaleTimeString("it-IT");
@@ -20,7 +21,14 @@ function App() {
   return (
     <div className="container">
       <h1>{time}</h1>
-      <button onClick={updateTime}>Set Time</button>
+      <button
+        className={isHovered ? "button hovered" : "button"}
+        onClick={updateTime}
+        onMouseOver={() => setIsHovered(true)}
+        onMouseOut={() => setIsHovered(false)}
+      >
+        Set Time
+      </button>
     </div>
   );
 }
