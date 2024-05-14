@@ -1,6 +1,7 @@
 import "../App.css";
 import React, { useState } from "react";
 import ToDoItem2 from "./ToDoItem2";
+import InputArea from "./InputArea";
 //思路：要想把用户的input呈现在列表里，需要一个useState()来记录define the state of the input value；且需要另外一个useState()在用户点击按钮后，将新的value陈列在list中；
 //步骤：1）如何记录用户的input value:
 //创建item的初始值“ ”, 把value添加到input box，同时加上onchange，在运行setItem后，这个新的value应该出现在state内（此时无需点击按钮）
@@ -10,22 +11,12 @@ import ToDoItem2 from "./ToDoItem2";
 //给button添加一个onchange，在用户点击按钮后，触发...sperator operator，把用户输入的value添加到list中
 
 function App() {
-  const [item, setItem] = useState("");
-  //define the state variable to hold the inputtext
-
-  function handleChange(event) {
-    const newItem = event.target.value;
-    setItem(newItem);
-  }
-
   const [list, setList] = useState([]);
 
-  function addList() {
+  function addItems(item) {
     setList((prevList) => {
       return [...prevList, item];
     });
-    setItem("");
-    // clear the input box after adding the item
   }
 
   function removeItems(id) {
@@ -41,18 +32,22 @@ function App() {
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
-      <div className="form">
+
+      {/* <div className="form">
         <input type="text" onChange={handleChange} value={item} />
         <button onClick={addList}>
-          {/*here is onClick, not onChange */}
           <span>Add</span>
         </button>
-      </div>
+      </div> */}
+
+      <InputArea onAdd={addItems} />
+
       <div>
         <ul>
           {/* {list.map((listItem) => {
             return <li>{listItem}</li>;
           })} */}
+
           {list.map((listItem, index) => (
             // 需要将Index加入parameter，详细查map function的用法
 
