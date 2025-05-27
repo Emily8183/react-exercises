@@ -1,5 +1,4 @@
 //分析有哪些是需要跟着child component，比如addList，只是保存用户的input，可以直接放到child component
-//而
 
 import React, { useState } from "react";
 

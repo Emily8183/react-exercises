@@ -1,7 +1,9 @@
 import "../App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ToDoItem2 from "./ToDoItem2";
 import InputArea from "./InputArea";
+import axios from "axios";
+
 //思路：要想把用户的input呈现在列表里，需要一个useState()来记录define the state of the input value；且需要另外一个useState()在用户点击按钮后，将新的value陈列在list中；
 //步骤：1）如何记录用户的input value:
 //创建item的初始值“ ”, 把value添加到input box，同时加上onchange，在运行setItem后，这个新的value应该出现在state内（此时无需点击按钮）
@@ -13,18 +15,62 @@ import InputArea from "./InputArea";
 function App() {
   const [list, setList] = useState([]);
 
-  function addItems(item) {
-    setList((prevList) => {
-      return [...prevList, item];
-    });
+  const API_URL = import.meta.env.VITE_API_URL; //读取环境变量
+
+  //GET
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/todos`, {
+        headers: {
+          "x-api-key": import.meta.env.VITE_API_KEY, //TODO: change to Congnito
+        },
+      })
+      .then((res) => {
+        const items = res.data;
+        setList(items); //data from the backend
+      })
+      .catch((err) => {
+        console.error("Error fetching tasks:", err);
+      });
+  }, []);
+
+  //Post
+  function addItems(itemText) {
+    axios
+      .post(
+        `${API_URL} / todos`,
+        {
+          task: itemText,
+          status: false,
+        },
+        {
+          headers: {
+            "x-api-key": import.meta.env.VITE_API_KEY,
+          },
+        }
+      )
+      .then((res) => {
+        const newItem = res.data; //extract the new item from res.data
+        setList((prevList) => [...prevList, newItem]); //save to the current "list" state
+      })
+      .catch((err) => {
+        console.error("Error adding task:", err);
+      });
   }
 
   function removeItems(id) {
-    setList((prevList) => {
-      return prevList.filter((item, index) => {
-        return index !== id;
+    axios
+      .delete(`${API_URL}/todos/${id}`, {
+        headers: {
+          "x-api-key": import.meta.env.VITE_API_KEY,
+        },
+      })
+      .then(() => {
+        setList((prevList) => prevList.filter((item) => item.task_id !== id));
+      })
+      .catch((err) => {
+        console.error("Error deleting task:", err);
       });
-    });
   }
 
   return (
@@ -48,13 +94,13 @@ function App() {
             return <li>{listItem}</li>;
           })} */}
 
-          {list.map((listItem, index) => (
+          {list.map((listItem) => (
             // 需要将Index加入parameter，详细查map function的用法
 
             <ToDoItem2
-              text={listItem}
-              key={index}
-              id={index}
+              text={listItem.task}
+              key={listItem.task_id}
+              id={listItem.task_id}
               onChecked={removeItems}
             />
           ))}
